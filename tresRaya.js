@@ -173,36 +173,52 @@ tresRaya.prototype.lineaDiagonal = function(con,x,y,w,z) {
 	dibujo.lineTo(w,z);
 
 	
-	dibujo.strokeStyle = "#000000";
+	dibujo.strokeStyle = "red";
 	dibujo.lineWidth = 15;
 	dibujo.stroke();
 	dibujo.closePath();
 };
 
-tresRaya.prototype.lineaVertical = function(con,x) {
+tresRaya.prototype.lineaVertical = function(con,x,tres) {
+	var color;
+	if(typeof(tres) != undefined)
+	{	
+		if(tres)
+		{
+			color = "red"
+		}else{
+		color = "#000000";
+		}
+		
+	}
 	var dibujo = con;
 	dibujo.beginPath();
 	dibujo.moveTo(x,0);
 	dibujo.lineTo(x,600);
 	dibujo.lineWidth = 15;
-	
-		dibujo.strokeStyle ="#000000";
-	
-	
+	dibujo.strokeStyle = color	
 	dibujo.stroke();
 	dibujo.closePath();
 };
 
-tresRaya.prototype.lineaHorizontal = function(con,y) {
+tresRaya.prototype.lineaHorizontal = function(con,y,tres) {
 	var dibujo = con;
+	var color;
+	if(typeof(tres) != undefined)
+	{	
+		if(tres)
+		{
+			color = "red"
+		}else{
+		color = "#000000";
+		}
+		
+	}
 	dibujo.beginPath();
 	dibujo.moveTo(0,y);
 	dibujo.lineTo(600,y);
 	dibujo.lineWidth = 15;
-	
-		dibujo.strokeStyle ="#000000";
-	
-	
+	dibujo.strokeStyle =color;
 	dibujo.stroke();
 	dibujo.closePath();
 };
@@ -212,7 +228,7 @@ tresRaya.prototype.dibujarCirculo = function(con,x,y) {
 
 	dibujo.beginPath();
 	dibujo.arc(x,y+90,90,0,Math.PI * 2,false);
-	dibujo.strokeStyle = "#F00";
+	dibujo.strokeStyle = "green";
 	dibujo.lineWidth = 5;
 	dibujo.stroke();
 	dibujo.closePath();
@@ -239,7 +255,7 @@ tresRaya.prototype.verificarGanador = function(cont) {
 	{
 		if(coordenadas.a.actual == coordenadas.b.actual && coordenadas.b.actual == coordenadas.c.actual)
 		{
-			this.lineaHorizontal(cont,100);
+			this.lineaHorizontal(cont,100,true);
 			this.finJuego = true;
 		}
 	}
@@ -249,7 +265,7 @@ tresRaya.prototype.verificarGanador = function(cont) {
 	{
 		if(coordenadas.d.actual == coordenadas.e.actual && coordenadas.e.actual == coordenadas.f.actual)
 		{
-			this.lineaHorizontal(cont,300);
+			this.lineaHorizontal(cont,300,true);
 			this.finJuego = true;
 		}
 		
@@ -259,7 +275,7 @@ tresRaya.prototype.verificarGanador = function(cont) {
 	{
 		if(coordenadas.g.actual == coordenadas.h.actual && coordenadas.h.actual == coordenadas.i.actual)
 		{
-			this.lineaHorizontal(cont,500);
+			this.lineaHorizontal(cont,500,true);
 			this.finJuego = true;
 		}
 		
@@ -271,7 +287,7 @@ tresRaya.prototype.verificarGanador = function(cont) {
 	{
 		if(coordenadas.a.actual == coordenadas.d.actual && coordenadas.d.actual == coordenadas.g.actual)
 		{
-			this.lineaVertical(cont,100);
+			this.lineaVertical(cont,100,true);
 			this.finJuego = true;
 		}
 	}
@@ -289,7 +305,7 @@ tresRaya.prototype.verificarGanador = function(cont) {
 	{
 		if(coordenadas.c.actual == coordenadas.f.actual && coordenadas.f.actual == coordenadas.i.actual)
 		{
-			this.lineaVertical(cont,500);
+			this.lineaVertical(cont,500,true);
 			this.finJuego = true;
 		}
 	}
